@@ -1,6 +1,7 @@
 <template>
   <div id="app">
    <h1>ddd</h1>
+   <h2>啦啦啦啦</h2>
   </div>
 </template>
 
