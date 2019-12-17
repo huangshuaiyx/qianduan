@@ -13,8 +13,8 @@
         <option value="企业">企业</option>
         <option value="平台">平台</option>
       </select>
-      <input type="text" placeholder="账号" />
-      <input type="text" placeholder="密码" />
+      <input type="text" placeholder="账号" v-model="name"/>
+      <input type="text" placeholder="密码" v-model="password"/>
       <input type="button" value="登录" @click="loginto()" />
     </form>
   </div>
@@ -28,20 +28,40 @@
 export default {
   data() {
     return {
-      f: false
+      f: false,
+      name:"",
+      password:""
     };
   },
   methods: {
     loginto() {
       //收集表单的数据 --- 用axios---接口---
+      let {name,password}=this;
       //node---数据库查询用户密码数据是否存在
-      //返回---正确（token）---错误
-      //正确--保存token--跳转到base页面
-      //错误--不跳转
-      this.f = true; //显示对勾
-      setTimeout(() => {
+      this.axios.post("/login",{
+        name:name,
+        password:password
+      }).then(res=>{
+        // console.log(res.data)
+        if(res.data.err_code==200){
+          //正确--保存token--跳转到base页面
+           localStorage.setItem("houtaitoken",JSON.stringify({id:res.data.id,token:res.data.token}))
+          this.f = true; //显示对勾
+          setTimeout(() => {
         this.$router.push({ name: "base" });
       }, 3000); //定时器
+        }else{
+           //错误--不跳转
+          this.name=""
+          this.password=""
+          alert('账号密码错误')
+        }
+      })
+      //返回---正确（token）---错误
+      
+     
+      
+      
     }
   }
 };
