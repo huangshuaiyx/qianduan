@@ -13,7 +13,7 @@
             <ggBox v-for="(x,y) in ggarr" :key="y" :ggarrItem="x"></ggBox>
 
 
-      <el-button type="primary">新增</el-button>
+      <el-button type="primary" @click="xin()">新增</el-button>
       </el-form-item>
       <!-- 商品价格 -->
       <el-form-item label="商品价格">
@@ -60,6 +60,11 @@ export default {
     },
     computed: {
         ...mapState(["ggarr"])
+    },
+    methods: {
+        xin(){
+            console.log(123)
+        }
     },
 }
 </script>
