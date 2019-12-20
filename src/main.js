@@ -19,6 +19,16 @@ import VueAxios from "vue-axios"
 Vue.use(VueAxios,axios)
 //全局接口 地址
 axios.defaults.baseURL="http://127.0.0.1:9527"
+//引入echarts
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+// 富文本编辑器 vue-quill-editor
+import QuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.bubble.css'
+import 'quill/dist/quill.snow.css'
+Vue.use(QuillEditor)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

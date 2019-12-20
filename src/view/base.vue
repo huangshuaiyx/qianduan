@@ -134,4 +134,5 @@ export default {
   overflow: auto;
   background: #f7f7f7;
 }
+
 </style>

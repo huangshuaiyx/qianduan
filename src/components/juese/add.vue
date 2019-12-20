@@ -46,7 +46,7 @@ export default {
         // qxid: Array.from(new Set(this.value.flat(Infinity)))
         qxid: this.value
       };
-      // console.log(obj);
+      console.log(obj);
       // 将 obj 通过 ajax  传递给 node
       this.axios.post("/jsadd", obj).then(res => {
         if (res.data.err_code == 200) {

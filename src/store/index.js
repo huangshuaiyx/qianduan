@@ -1,48 +1,46 @@
-// 4-1、载入 vue 
-        import Vue from "vue"
-    // 4-2、载入 n
-        import Vuex from "vuex"
-    // 4-3、使用 vuex
-        Vue.use(Vuex)
-    // 4-4、创建 store
-        const store=new Vuex.Store({
-            // 共享状态
-                state:{
-                    ggarr:[
-                        {
-                            name:"8G+128G",
-                            can:[
-                                {
-                                    name:"白色",
-                                    price:"100"
-                                },
-                                {
-                                    name:"黑色",
-                                    price:"200"
-                                }
-                            ]
-                        },
-                        {
-                            name:"16G+128G",
-                            can:[
-                                {
-                                    name:"白色",
-                                    price:"100"
-                                },
-                                {
-                                    name:"褐色",
-                                    price:"200"
-                                }
-                            ]
-                        }
-                    ]
-                },
-            // 方法(可以是异步)
-                actions:{},
-            // 唯一可以改变state 的方法 （必须是同步的）
-                mutations:{},
-            // 相当于 vue中的计算属性
-                getters:{}
-        })
-    // 4-5、导出 store
-        export default store;
+//1、载入vue
+import Vue from "vue";
+// 2、载入vuex
+import Vuex from "vuex";
+// 3.使用vuex
+Vue.use(Vuex);
+
+// 4、创建仓库
+const store = new Vuex.Store({
+    // 状态
+    state: {
+        ggarr: [
+
+        ]
+    },
+    // 异步方法
+    actions: {},
+    //改变 状态的方法
+    mutations: {
+        //增加一整项规格 
+        addggarr(state, obj) {
+            state.ggarr.push(obj);
+        },
+        //删除一整项规格 --下标
+        delggarr(state, ggarrindex) {
+            state.ggarr.splice(ggarrindex, 1)
+        },
+        //增加规格中 一项参数，价格
+        addggarrcan(state, obj) {
+            let { ggarrindex, canobj } = obj
+            state.ggarr[ggarrindex].can.push(canobj)
+        },
+        //删除规格中 一项参数，价格
+        delggarrcan(state, obj) {
+            let { ggarrindex, canindex } = obj
+            state.ggarr[ggarrindex].can.splice(canindex, 1)
+        }
+    },
+    // 计算属性
+    getters: {}
+
+})
+
+//5、导出
+
+export default store;

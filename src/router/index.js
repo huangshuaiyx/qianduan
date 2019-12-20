@@ -6,16 +6,27 @@ const base=()=> import("@/view/base.vue")
 
 const fxuser=()=>import("@/components/fenxi/user.vue")
 const fxorder=()=>import("@/components/fenxi/order.vue")
+const fxgoods=()=>import("@/components/fenxi/goods.vue")
 const qxlist=()=>import("@/components/qxgl/list.vue")
 const qxadd=()=>import("@/components/qxgl/add.vue")
+//角色
+
 const jslist=()=>import("@/components/juese/list.vue")
 const jsadd=()=>import("@/components/juese/add.vue")
+const jsedit=()=>import("@/components/juese/edit.vue")
+
+//管理员
 const gladd=()=>import("@/components/gly/add.vue")
 const gllist=()=>import("@/components/gly/list.vue")
-const jsedit=()=>import("@/components/juese/edit.vue")
 const gledit=()=>import("@/components/gly/edit.vue")
+//商品
 const spadd=()=>import("@/components/sp/add.vue")
 const splist=()=>import("@/components/sp/list.vue")
+// 商品分类- goodsfl
+const goodsflAdd = () => import("@/components/goodsfl/add.vue")
+const goodsflList = () => import("@/components/goodsfl/list.vue")
+//订单管理
+const ddlist = () => import("@/components/ddgl/list.vue")
 import axios from "axios"
 Vue.use(Router)
 
@@ -91,7 +102,31 @@ let router= new Router({
           name: 'splist',
           component: splist
         },
+        {
+          path: 'fxgoods',
+          name: 'fxgoods',
+          component: fxgoods
+        },
+        {
+          path: 'goodsfllist',
+          name: 'goodsfllist',
+          component: goodsflList,
+        },
+        {
+          path: 'goodsfladd',
+          name: 'goodsfladd',
+          component: goodsflAdd,
+        },
+        {
+          path: 'ddlist',
+          name: 'ddlist',
+          component: ddlist,
+        },
       ]
+    },
+    {
+      path:'/',
+      redirect:'/login'
     }
   ]
 })
@@ -122,6 +157,7 @@ router.beforeEach((to,from,next)=>{
 
         //   }
         // })
+        // 
       } else {
         console.log("token 过期")
         router.push({ name: "login" })

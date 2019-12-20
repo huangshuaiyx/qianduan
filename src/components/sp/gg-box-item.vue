@@ -1,14 +1,23 @@
 <template>
-    <div>
-        <div class="gg-right-item">
-              <el-button type="danger">删除</el-button>
-              <el-input v-model="canitem.name"></el-input>
-              <el-input v-model="canitem.price"></el-input>
-            </div>
-    </div>
+  <div class="gg-right-item">
+    <el-button
+      type="warning"
+      @click="delggarrcan({
+      'ggarrindex':ggarrindex,
+      'canindex':canindex
+    })"
+    >删除</el-button>
+    <el-input v-model="canItem.name"></el-input>
+    <el-input v-model="canItem.price"></el-input>
+  </div>
 </template>
+
 <script>
+import { mapMutations } from "vuex";
 export default {
-    props:['canitem']
-}
+  props: ["canItem", "canindex", "ggarrindex"],
+  methods: {
+    ...mapMutations(["delggarrcan"])
+  }
+};
 </script>

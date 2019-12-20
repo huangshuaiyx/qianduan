@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>我是管理员列表</h1>
-    <el-button @click="$router.push({'name':'glyadd'})">添加管理员</el-button>
+    <el-button @click="$router.push({'name':'gladd'})">添加管理员</el-button>
     <el-table :data="tableData" style="width: 100%" max-height="500">
       <el-table-column fixed prop="_id" label="id"></el-table-column>
       <el-table-column fixed prop="name" label="管理员名"></el-table-column>
